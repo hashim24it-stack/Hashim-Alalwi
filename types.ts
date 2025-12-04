@@ -4,7 +4,9 @@ export enum PageView {
   SCHEDULE = 'SCHEDULE',
   ANNOUNCEMENTS = 'ANNOUNCEMENTS',
   RESULTS = 'RESULTS',
-  CONTACT = 'CONTACT'
+  CONTACT = 'CONTACT',
+  LOGIN = 'LOGIN',
+  TEACHERS = 'TEACHERS'
 }
 
 export interface NavigationProps {

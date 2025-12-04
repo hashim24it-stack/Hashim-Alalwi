@@ -7,9 +7,12 @@ import { Schedule } from './pages/Schedule';
 import { Announcements } from './pages/Announcements';
 import { Results } from './pages/Results';
 import { Contact } from './pages/Contact';
+import { Login } from './pages/Login';
+import { Teachers } from './pages/Teachers';
 import { PageView } from './types';
+import { SchoolProvider } from './context/SchoolContext';
 
-function App() {
+function AppContent() {
   const [activePage, setActivePage] = useState<PageView>(PageView.HOME);
 
   // Scroll to top on page change
@@ -29,8 +32,12 @@ function App() {
         return <Announcements />;
       case PageView.RESULTS:
         return <Results />;
+      case PageView.TEACHERS:
+        return <Teachers />;
       case PageView.CONTACT:
         return <Contact />;
+      case PageView.LOGIN:
+        return <Login onNavigate={setActivePage} />;
       default:
         return <Home onNavigate={setActivePage} />;
     }
@@ -44,8 +51,16 @@ function App() {
         {renderContent()}
       </main>
 
-      <Footer />
+      <Footer onNavigate={setActivePage} />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <SchoolProvider>
+      <AppContent />
+    </SchoolProvider>
   );
 }
 
